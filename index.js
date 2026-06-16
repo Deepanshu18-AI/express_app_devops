@@ -10,7 +10,7 @@ app.get('/sekret', (req, res) => {
 })
 
 const PORT = 8080
-
+console.log("Hello World! Pipeline Version 1.0")
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
