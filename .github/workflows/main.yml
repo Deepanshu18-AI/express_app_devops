@@ -8,7 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
@@ -28,3 +27,11 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/my-express-app:latest
+
+  deploy:
+    needs: build # Wait for the image build to complete successfully first
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Render Cloud Deployment
+        run: |
+          curl -X POST "${{ secrets.RENDER_DEPLOY_WEBHOOK }}"
