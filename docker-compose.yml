@@ -3,7 +3,7 @@ services:
     image: deepanshu1811/my-express-app:latest
     container_name: express-app
     ports:
-      - "3000:3000"
+      - "3000:8080" 
     restart: unless-stopped
 
   watchtower:
